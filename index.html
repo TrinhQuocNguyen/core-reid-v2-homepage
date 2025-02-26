@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CORE-ReID V2: Comprehensive Optimization and Refinement through Ensemble fusion in Domain Adaptation for person re-identification">
+  <meta name="keywords" content="CORE-ReID">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CORE-ReID</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/ipu_icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <!-- <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">CORE-ReID: <u>C</u>omprehensive <u>O</u>ptimization and <u>R</u>efinement through <u>E</u>nsemble fusion in Domain Adaptation for person re-identification</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://www.researchgate.net/profile/Trinh-Nguyen-89">Trinh Quoc Nguyen</a><sup>1, 2, *</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.researchgate.net/profile/Prima-Ardiansyah">Oky Dicky Ardiansyah Prima </a><sup>1, *</sup>,</span>
+            <span class="author-block">
+              <a href="">Katsuyoshi Hotta</a><sup>2</sup>.
+          </div>
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup><a href="https://www.iwate-pu.ac.jp/en/">Iwate Prefectural University</a>,</span>
+            <span class="author-block"><sup>2</sup><a href="https://cybercore.co.jp/">CyberCore Co., Ltd</a>.</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup> Correspondence: <a href="">g236v201@s.iwate-pu.ac.jp (T.Q.N.)</a>; <a href="">prima@iwate-pu.ac.jp (O.D.A.P.)</a>.</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://www.mdpi.com/2674-113X/3/2/12"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/TrinhQuocNguyen/CORE-ReID"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://paperswithcode.com/paper/core-reid-comprehensive-optimization-and"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">CORE-ReID</span> is a framwork for Unsupervised Domain Adaption for person re-identification.
+      </h2> -->
+    </div>
+  </div>
+</section>
+
+<hr>
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This study introduces a novel framework, <b>"Comprehensive Optimization and Refinement through 
+            Ensemble Fusion in Domain Adaptation for Person Re-identification (CORE-ReID)"</b>,
+             to address Unsupervised Domain Adaptation (UDA) for person Re-identification (ReID).
+          </p>
+          <p>
+            The framework utilizes CycleGAN to generate diverse data that harmonize differences in image characteristics 
+            from different camera sources in the pre-training stage. 
+            In the fine-tuning stage, based on a pair of teacher–student networks, 
+            the framework integrates multi-view features for multi-level clustering to derive diverse pseudo-labels. 
+
+            A learnable Ensemble Fusion component that focuses on fine grained local information 
+            within global features is introduced to enhance learning comprehensiveness and avoid 
+            ambiguity associated with multiple pseudo-labels. 
+            Experimental results on three common UDAs in Person ReID demonstrated significant performance 
+            gains over state-of-the-art approaches. 
+            Additional enhancements, such as Efficient Channel Attention Block and Bidirectional Mean Feature Normalization 
+            mitigate deviation effects and the adaptive fusion of global 
+            and local features using the ResNet-based model, further strengthening the framework.
+          </p>
+          <p>
+            The proposed framework ensures clarity in fusion features, avoids ambiguity,
+             and achieves high accuracy in terms of Mean Average Precision, Top-1, Top-5, and Top-10, 
+             positioning it as an ad-vanced and effective solution for UDA in person ReID.
+             Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Paper Section-->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Overall</h2>
+          <div class="content has-text-justified">
+          <img src="./static/images/Figure1.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+          <p><b>Figure 1.</b> Two stages in our process adopting the clustering-based approach. 
+            Primarily, we train the model on a customized source domain dataset, and subsequently, 
+            the parameters of this pre-trained model are transferred to both the student and teacher networks as an initiali-zation 
+            step for the next stage. During fine-tuning, we train the student model and then update the teacher model using momentum updates. 
+            To optimize computational re-sources, only the teacher model is utilized for inference purposes.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section-->
+
+    <!-- Paper Small Section-->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Generate Training Data on Source Domain Using CycleGAN</h2>
+          <div class="content has-text-justified">
+          <img src="./static/images/Figure2.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+          <p><b>Figure 2.</b> Our method follows a specific pipeline to create the comprehensive training set for the source domain. 
+            Initially, we combine both the training set (depicted in <b style="color:green;">green</b> boxes) and 
+            the test set (represented by <b style="color:#006600;">dark green</b> boxes)
+             within the source dataset, forming the total training set con-sisting of real images. 
+             This combined set is then employed to train the camera-aware style trans-fer model. 
+             For each real image, the trained transfer model is applied to generate images (indicated by <b style="color:#0099ff;">blue</b> boxes 
+             for the training set and <b style="color:#004d99;">dark blue</b> boxes for the test set) that align with the stylistic characteristics of the target cameras. 
+             Subsequently, the real images (<b style="color:green;">green</b> and <b style="color:#006600;">dark green</b> boxes) and the style-transferred images 
+             (<b style="color:#0099ff;">blue</b> and <b style="color:#004d99;">dark blue</b> boxes) 
+             are amalgamated to produce the final training set within the source domain.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Small Section-->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Generated Images from CycleGAN</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!-- Figure3-a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a) Sample in training set</h2>
+             
+              <img src="./static/images/Figure3-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ Figure3-a -->
+    
+          <!-- Figure3-b -->
+          <div class="column">
+            <h2 class="title is-5">(b) Sample in validation set</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure3-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ Figure3-b -->
+        </div>
+        <p>
+          <b>Figure 3.</b> Some style-transferred samples in Market-1501 [39]. 
+          Each image, originally taken by a specific camera, is transformed to align with the styles of the other five cameras, 
+          both within the training and test data. 
+          The real images are shown on the left, while their corresponding style-transferred counterparts are shown on the right.
+        </p>
+      </div>
+    </section>
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Source Pretraining</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure4.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 4.</b> The overall training process in the fully supervised pre-training stage.
+               We employ ResNet101 as the backbone in our training process. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">CORE-ReID (Target Fine-tuning)</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure5.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 5.</b> Overview of our <b>CORE-ReID</b> framework. <b>BMFN</b> denotes Bi-directional mean feature Normalization. 
+              We combined local features and global features using Ensemble Fusion.
+                The <b>ECAB</b> in Ensemble Fusion promotes to enhance the features.
+                By using BMFN, the framework can merge the feature from original image x_(T,i) and its paired flipped image x_(T,i)^', 
+                then produce fusion feature  φ_l,l∈{top,bot}. The student network is optimized using pseudo labels in a supervised manner, 
+              while the teacher network is updated by computing the temporal average of the student networks via the update momentum.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Ensemble Fusion</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure6.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 6.</b> The Ensemble Fusion component. ς_top  and ς_bot   features are passed through a component namely Efficient Channel Attention Block (ECAB)
+               to produce the channel attention maps by exploiting the inter-channel relationship of features which helps to enhance the features. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Efficient Channel Attention Block</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure7.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 7.</b> The structure of Efficient Channel Attention Block. The Shared Multilayer Perceptron has odd h hidden layers, 
+              where the first (h-1)/2 layers are reduced the size with the reduction rate r, and the last (h-1)/2 layers will be expanded with the same rate r. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Feature Maps</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure8-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure8-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+        </div>
+        <div class="columns is-centered">
+
+          <!-- c -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(c)</h2>
+             
+              <img src="./static/images/Figure8-c.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ c -->
+    
+          <!-- d -->
+          <div class="column">
+            <h2 class="title is-5">(d)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure8-d.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ d -->
+        </div>
+        <p>
+          <b>Figure 8.</b> Examples by drawing feature maps using Grad-CAM [63]. 
+          By using the CORE-ReID framework, we consider both original image and its flipped image. 
+          (a), (b), (c), (d) illustrate the feature maps of those pairs on Market➝CUHK, CUHK➝Market, Market➝MSMT, CUHK➝MSMT, respectively.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Accuracy</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure9-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure9-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+        </div>
+        <div class="columns is-centered">
+
+          <!-- c -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(c)</h2>
+             
+              <img src="./static/images/Figure9-c.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ c -->
+    
+          <!-- d -->
+          <div class="column">
+            <h2 class="title is-5">(d)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure9-d.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ d -->
+        </div>
+        <p>
+          <b>Figure 9.</b> Impact of clustering parameter M_(T,j). Results on (a) Market→CUHK, (b) CUHK→Market, (c) Market→MSMT, and (d) CUHK→MSMT.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">ECAB and BMFN Settings</h2>
+        </div>
+
+        <div class="columns is-centered">
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure10-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure10-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+          </div>
+          <div class="columns is-centered">
+            <!--c -->
+            <div class="column">
+              <div class="content">
+                <h2 class="title is-5">(c)</h2>
+               
+                <img src="./static/images/Figure10-c.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+  
+              </div>
+            </div>
+            <!--/ c -->
+      
+            <!-- d -->
+            <div class="column">
+              <h2 class="title is-5">(d)</h2>
+              <div class="columns is-centered">
+                <div class="column content">
+                  <img src="./static/images/Figure10-d.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+          
+                </div>
+              </div>
+            </div>
+            <!--/ d -->
+            </div>
+        </div>
+        <p>
+          <b>Figure 10.</b> Effect of using ECAB and BMFN in our proposed methods. 
+          Results on (a) Market → CUHK, (b) CUHK → Market, (c) Market → MSMT, and (d) CUHK → MSMT. The evaluation metrics are mAP(%) and rank (R) at k accuracy (%).
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Backbone Configurations</h2>
+        </div>
+
+        <div class="columns is-centered">
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure11-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure11-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+          </div>
+          <p>
+            <b>Figure 11.</b> Impact of the backbone configurations. Results on (a) Market → CUHK, 
+            (b) CUHK → Market show that ResNet101 backbone gives the best overall results. The evaluation metrics are mAP(%) and rank (R) at k accuracy (%).
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <!-- <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-2">Results</h2>
+              <div class="content has-text-justified">
+              <img src="./static/images/Table1_new.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 1.</b> Experimental results of the proposed CORE-ReID framework and SOTA methods
+                 (Acc %) on Market-1501 and CUHK03 datasets.
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.
+                <sup>a</sup> indicates the method uses multiple source datasets. </p>
+            </div>
+            <div class="content has-text-justified">
+              <img src="./static/images/Table2_new.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID framework and SOTA methods 
+                (Acc %) from Market-1501 and CUHK03 source datasets to target domain MSMT17 dataset
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.
+                <sup>a</sup> indicates the method uses multiple source datasets, 
+                <sup>b</sup> denotes the implementation is based on the author’s code. 
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-2">Additional Results</h2>
+              <div class="content has-text-justified">
+              <img src="./static/images/Table1.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 1.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art
+                 algorithms (Acc %) on Market-1501 and DukeMTMC-ReID datasets. 
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.</p>
+            </div>
+            <div class="content has-text-justified">
+              <img src="./static/images/Table2.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art algorithms 
+                (Acc %) from Market-1501 and DukeMTMC-ReID source datasets to target domain MSMT17 dataset. 
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h1 class="title">Citations</h2>
+    <h4 >If you find this code useful for your research, please consider citing our paper.</h2>
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{,
+  author    = {Nguyen TQ, Prima ODA, Hotta K},
+  title     = {CORE-ReID: Comprehensive Optimization and Refinement through Ensemble Fusion in Domain Adaptation for Person Re-Identification.},
+  journal   = {Software},
+  doi       = {https://doi.org/10.3390/software3020012},
+  volume    = {3},
+  pages     = {227-249},
+  year      = {2024},
+}</code></pre>
+    <h2 class="title">MDPI and ACS Style</h2>
+    <pre><code>Nguyen, T.Q.; Prima, O.D.A.; Hotta, K. 
+CORE-ReID: Comprehensive Optimization and Refinement through Ensemble Fusion in Domain Adaptation for Person Re-Identification. 
+Software 2024, 3, 227-249. https://doi.org/10.3390/software3020012
+</code></pre>
+    <h2 class="title">AMA Style</h2>
+    <pre><code>Nguyen TQ, Prima ODA, Hotta K. 
+CORE-ReID: Comprehensive Optimization and Refinement through Ensemble Fusion in Domain Adaptation for Person Re-Identification. 
+Software. 2024; 3(2):227-249. https://doi.org/10.3390/software3020012
+</code></pre>
+    <h2 class="title">Chicago/Turabian Style</h2>
+    <pre><code>Nguyen, Trinh Quoc, Oky Dicky Ardiansyah Prima, and Katsuyoshi Hotta. 2024.
+"CORE-ReID: Comprehensive Optimization and Refinement through Ensemble Fusion in Domain Adaptation for Person Re-Identification" Software 3, no. 2: 227-249.
+https://doi.org/10.3390/software3020012</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://www.mdpi.com/2674-113X/3/2/12">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/TrinhQuocNguyen/CORE-ReID" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            *This project is intended solely for academic research and effect demonstration.
+          </p>
+          <p>
+            *This page was built using the Template which was adopted from the <a
+            href="https://nerfies.github.io/">Nerfies</a> project page.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
