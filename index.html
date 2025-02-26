@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="CCORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion++">
+        content="CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion++">
   <meta name="keywords" content="CORE-ReID">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CORE-ReID V2</title>
@@ -88,14 +88,14 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">CORE-ReID: <u>C</u>omprehensive <u>O</u>ptimization and <u>R</u>efinement through <u>E</u>nsemble fusion in Domain Adaptation for person re-identification</h1>
+          <h1 class="title is-1 publication-title">CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion++</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
               <a href="https://www.researchgate.net/profile/Trinh-Nguyen-89">Trinh Quoc Nguyen</a><sup>1, 2, *</sup>,</span>
             <span class="author-block">
               <a href="https://www.researchgate.net/profile/Prima-Ardiansyah">Oky Dicky Ardiansyah Prima </a><sup>1, *</sup>,</span>
             <span class="author-block">
-              <a href="">Katsuyoshi Hotta</a><sup>2</sup>.
+              <a href="">******</a><sup>2</sup>.
           </div>
           <br>
           <div class="is-size-5 publication-authors">
@@ -187,30 +187,30 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This study introduces a novel framework, <b>"Comprehensive Optimization and Refinement through 
-            Ensemble Fusion in Domain Adaptation for Person Re-identification (CORE-ReID)"</b>,
-             to address Unsupervised Domain Adaptation (UDA) for person Re-identification (ReID).
+            This study presents <b>CORE-ReID V2</b>, an enhanced framework of CORE-ReID. 
+            <b>CORE-ReID V2</b> ex-tends its predecessor by addressing Unsupervised Domain Adaptation (UDA) 
+            challenges in both Person ReID and Vehicle ReID, with further applicability to Object ReID.
           </p>
           <p>
-            The framework utilizes CycleGAN to generate diverse data that harmonize differences in image characteristics 
-            from different camera sources in the pre-training stage. 
-            In the fine-tuning stage, based on a pair of teacher–student networks, 
-            the framework integrates multi-view features for multi-level clustering to derive diverse pseudo-labels. 
+            The framework employs CycleGAN during pre-training to synthesize diverse data that bridges image characteristics across different domains. 
+            In the fine-tuning stage, <b>CORE-ReID V2</b> integrates teacher-student networks paradigm to leverage multi-view features for robust multi-level 
+            clustering and pseudo-label generation.
 
-            A learnable Ensemble Fusion component that focuses on fine grained local information 
-            within global features is introduced to enhance learning comprehensiveness and avoid 
-            ambiguity associated with multiple pseudo-labels. 
-            Experimental results on three common UDAs in Person ReID demonstrated significant performance 
-            gains over state-of-the-art approaches. 
-            Additional enhancements, such as Efficient Channel Attention Block and Bidirectional Mean Feature Normalization 
-            mitigate deviation effects and the adaptive fusion of global 
-            and local features using the ResNet-based model, further strengthening the framework.
+            It introduces the improved Ensemble Fusion++ module, 
+            featuring learnable param-eters to adaptively combine enhanced local and global features, 
+            thus reducing ambiguity in pseudo-labels. <b>CORE-ReID V2</b> incorporates advanced architectural enhancements, 
+            such as the Simplified Efficient Channel Attention Block (SECAB) and Efficient Channel Attention Block (ECAB),
+             to refine feature representation and strengthen its learning capacity.
           </p>
           <p>
-            The proposed framework ensures clarity in fusion features, avoids ambiguity,
-             and achieves high accuracy in terms of Mean Average Precision, Top-1, Top-5, and Top-10, 
-             positioning it as an ad-vanced and effective solution for UDA in person ReID.
-             Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID</a>.
+            Experimental results on multiple benchmark datasets validate the superiority of <b>CORE-ReID V2</b>, 
+            achieving substantial improvements over state-of-the-art methods. 
+            By supporting lightweight backbones like ResNet18 and ResNet34, it ensures scalability and efficiency, 
+            while achieving top performance in terms of Mean Average Precision (mAP) and Rank-k Accuracy (Top-1, Top-5, Top-10). 
+            <b>CORE-ReID V2</b> emerges as a versatile and highly effective framework, setting new benchmarks in UDA for ReID across diverse domains.
+          </p>
+          <p> 
+            Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID-V2</a>.
           </p>
         </div>
       </div>
