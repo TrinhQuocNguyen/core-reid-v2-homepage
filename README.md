@@ -1,5 +1,5 @@
 # CORE-ReID
-Link: https://trinhquocnguyen.github.io/core-reid-homepage/
+Link: https://trinhquocnguyen.github.io/core-reid-v2-homepage/
 
 
 
