@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion++">
+    content="CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion">
   <meta name="keywords" content="CORE-ReID V2">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CORE-ReID V2</title>
@@ -116,7 +116,7 @@
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="https://www.mdpi.com/2674-113X/3/2/12"
+                  <a href="#"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -125,7 +125,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -202,33 +202,21 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              This study presents <b>CORE-ReID V2</b>, an enhanced framework of CORE-ReID.
-              <b>CORE-ReID V2</b> ex-tends its predecessor by addressing Unsupervised Domain Adaptation (UDA)
-              challenges in both Person ReID and Vehicle ReID, with further applicability to Object ReID.
+              This study presents <b>CORE-ReID V2</b>, an enhanced framework building upon CORE-ReID.
+              </p>
+            <p>
+              The new framework extends its predecessor by addressing Unsupervised Domain Adaptation (UDA) challenges in Person ReID and Vehicle ReID, with further applicability to Object ReID. 
+              During pre-training, CycleGAN is employed to synthesize diverse data, bridging image charac-teristic gaps across different domains. 
+              In the fine-tuning, an advanced ensemble fusion mechanism, consisting of the Simplified Efficient Channel Attention Block (SECAB) 
+              and Efficient Channel Attention Block (ECAB), enhances both local and global feature representations while reducing ambiguity in pseudo-labels for target samples. 
+              
             </p>
             <p>
-              The framework employs CycleGAN during pre-training to synthesize diverse data that bridges image
-              characteristics across different domains.
-              In the fine-tuning stage, <b>CORE-ReID V2</b> integrates teacher-student networks paradigm to leverage
-              multi-view features for robust multi-level
-              clustering and pseudo-label generation.
-
-              It introduces the improved Ensemble Fusion++ module,
-              featuring learnable param-eters to adaptively combine enhanced local and global features,
-              thus reducing ambiguity in pseudo-labels. <b>CORE-ReID V2</b> incorporates advanced architectural
-              enhancements,
-              such as the Simplified Efficient Channel Attention Block (SECAB) and Efficient Channel Attention Block
-              (ECAB),
-              to refine feature representation and strengthen its learning capacity.
-            </p>
-            <p>
-              Experimental results on multiple benchmark datasets validate the superiority of <b>CORE-ReID V2</b>,
-              achieving substantial improvements over state-of-the-art methods.
-              By supporting lightweight backbones like ResNet18 and ResNet34, it ensures scalability and efficiency,
-              while achieving top performance in terms of Mean Average Precision (mAP) and Rank-k Accuracy (Top-1,
-              Top-5, Top-10).
-              <b>CORE-ReID V2</b> emerges as a versatile and highly effective framework, setting new benchmarks in UDA
-              for ReID across diverse domains.
+              Experimental results on widely used UDA Person ReID and Vehicle ReID datasets demonstrate that the proposed framework outperforms state-of-the-art methods, 
+              achieving top performance in Mean Average Precision (mAP) and Rank-k Accuracy (Top-1, Top-5, Top-10). 
+              Moreover, the framework supports lightweight backbones such as ResNet18 and ResNet34, ensuring both scalability and efficiency. 
+              Our work not only pushes the boundaries of UDA-based Object ReID but also provides a solid foundation for further research and advancements 
+              in this domain. 
             </p>
             <p>
               Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID-V2</a>.
@@ -628,70 +616,25 @@
 
       <section class="section">
         <div class="container is-max-desktop">
+          <!-- Abstract. -->
           <div class="columns is-centered has-text-centered">
-            <h2 class="title is-4">SECAB Setting</h2>
-          </div>
-
-          <div class="columns is-centered">
-            <!--a -->
-            <div class="column">
-              <div class="content">
-                <h2 class="title is-5">(a)</h2>
-
-                <img src="./static/images/Figure13-a.png" class="interpolation-image"
-                  alt="Interpolate start reference image." />
-
-              </div>
-            </div>
-            <!--/ a -->
-
-            <!-- b -->
-            <div class="column">
-              <h2 class="title is-5">(b)</h2>
-              <div class="columns is-centered">
-                <div class="column content">
-                  <img src="./static/images/Figure13-b.png" class="interpolation-image"
-                    alt="Interpolate start reference image." />
-
+            <div class="column is-four-fifths">
+              <div class="columns is-centered has-text-centered">
+                <div class="column">
+                  <h4 class="title is-4">SECAB Settings</h4>
+                  <div class="content has-text-justified">
+                    <img src="./static/images/Table9.png" class="interpolation-image"
+                      alt="Interpolate start reference image." />
+                    <p><b>Table.</b> Experimental results validating the effectiveness of SECAB in our proposed framework. 
+                      The clustering parameter values (M_(T,j)) 
+                      are derived from the study of K-means clustering settings. Bold values represent the better results.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-            <!--/ b -->
           </div>
-          <div class="columns is-centered">
-            <!--c -->
-            <div class="column">
-              <div class="content">
-                <h2 class="title is-5">(c)</h2>
-
-                <img src="./static/images/Figure13-c.png" class="interpolation-image"
-                  alt="Interpolate start reference image." />
-
-              </div>
-            </div>
-            <!--/ c -->
-
-            <!-- d -->
-            <div class="column">
-              <h2 class="title is-5">(d)</h2>
-              <div class="columns is-centered">
-                <div class="column content">
-                  <img src="./static/images/Figure13-d.png" class="interpolation-image"
-                    alt="Interpolate start reference image." />
-
-                </div>
-              </div>
-            </div>
-            <!--/ d -->
-          </div>
-        </div>
-        <p>
-          <b>Figure 13.</b> Effect of using ECAB and BMFN in our proposed methods.
-          Results on (a) Market → CUHK, (b) CUHK → Market, (c) Market → MSMT, and (d) CUHK → MSMT. The evaluation
-          metrics are mAP(%) and rank (R) at k accuracy (%).
-        </p>
-    </div>
-  </section>
+      </section>
 
   <section class="section">
     <div class="container is-max-desktop">
@@ -828,9 +771,9 @@
         <div class="column is-four-fifths">
           <div class="columns is-centered has-text-centered">
             <div class="column">
-              <h2 class="title is-2">Results</h2>
+              <h2 class="title is-2">Results on Person ReID</h2>
               <div class="content has-text-justified">
-                <img src="./static/images/Table1_new.png" class="interpolation-image"
+                <img src="./static/images/Table3.png" class="interpolation-image"
                   alt="Interpolate start reference image." />
                 <p><b>Table 1.</b> Experimental results of the proposed CORE-ReID framework and SOTA methods
                   (Acc %) on Market-1501 and CUHK03 datasets.
@@ -839,9 +782,37 @@
                 </p>
               </div>
               <div class="content has-text-justified">
-                <img src="./static/images/Table2_new.png" class="interpolation-image"
+                <img src="./static/images/Table4.png" class="interpolation-image"
                   alt="Interpolate start reference image." />
-                <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID framework and SOTA methods
+                <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID V2 framework and SOTA methods on VeRi-776 ➝ VehicleID. 
+                  Bold values represent the best results while Underline values indicate the sec-ond-best performance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-2">Results on Vehicle ReID</h2>
+              <div class="content has-text-justified">
+                <img src="./static/images/Table5.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <p><b>Table 3.</b> Experimental results of CORE-ReID V2 framework and SOTA methods on VehicleID ➝ VeRi-776. 
+                  Bold values represent the best results while Underline values indicate the second-best perfor-mance.
+                </p>
+              </div>
+              <div class="content has-text-justified">
+                <img src="./static/images/Table6.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <p><b>Table 4.</b> Experimental results of the proposed CORE-ReID framework and SOTA methods
                   (Acc %) from Market-1501 and CUHK03 source datasets to target domain MSMT17 dataset
                   <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.
                   <sup>a</sup> indicates the method uses multiple source datasets,
@@ -851,7 +822,6 @@
             </div>
           </div>
         </div>
-        <!--/ Abstract. -->
       </div>
   </section>
 
@@ -864,7 +834,7 @@
             <div class="column">
               <h2 class="title is-2">Additional Results</h2>
               <div class="content has-text-justified">
-                <img src="./static/images/Table1.png" class="interpolation-image"
+                <img src="#" class="interpolation-image"
                   alt="Interpolate start reference image." />
                 <p><b>Table 1.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art
                   algorithms (Acc %) on Market-1501 and DukeMTMC-ReID datasets.
@@ -872,7 +842,7 @@
                 </p>
               </div>
               <div class="content has-text-justified">
-                <img src="./static/images/Table2.png" class="interpolation-image"
+                <img src="#" class="interpolation-image"
                   alt="Interpolate start reference image." />
                 <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art
                   algorithms
